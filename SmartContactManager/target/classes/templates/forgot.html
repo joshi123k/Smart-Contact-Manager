@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section>
+
+		<div class="container">
+
+			<div class="card mt-5">
+
+				<div class="card-body">
+
+
+					<h4 class="text-uppercase text-primary text-center mt-5">
+						Send OTP to Register Email</h4>
+
+
+					<div class="container text-center my-5">
+
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert"
+							role="alert">
+
+							<p class="text-center" th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+
+						<form th:action="@{/send-otp}" method="post">
+
+							<div class="form-group">
+								<input type="email" name="email" class="form-control"
+									required="required" placeholder="Enter Email ID">
+
+								<button type="submit"
+									class="btn btn-block btn-outline-primary mt-4">Send</button>
+							</div>
+
+						</form>
+
+
+					</div>
+
+
+
+
+				</div>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</section>
+</body>
+</html>
